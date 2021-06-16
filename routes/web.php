@@ -17,6 +17,8 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix' => '/api'], function () use ($router) {
-    return $router->get('/series', 'SeriesController@index');
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->post('series', 'SeriesController@store');
+    $router->get('series', 'SeriesController@index');
+    $router->get('series/{id}', 'SeriesController@get');
 });
