@@ -8,9 +8,11 @@ abstract class BaseController
 {
     protected string $classe;
 
-    public function index()
+    public function index(Request $request)
     {
-        return $this->classe::all();
+//        var_dump($request->per_page);exit;
+//        return $this->classe::all();
+        return $this->classe::paginate($request->per_page);
     }
 
     public function store(Request $request)
