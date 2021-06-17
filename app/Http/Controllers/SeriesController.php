@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Serie;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class SeriesController
 {
@@ -47,5 +48,19 @@ class SeriesController
         $serie->save();
 
         return $serie;
+    }
+
+    public function destroy(int $id)
+    {
+        $qtdDeSeriesRemovidas = Serie::destroy($id);
+
+        if ($qtdDeSeriesRemovidas === 0) {
+            return response()->json([
+                'erro' => 'Recurso não encontrado'
+            ],
+           404);
+        }
+
+        return response()->json('', 204);
     }
 }
