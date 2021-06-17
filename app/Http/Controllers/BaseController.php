@@ -10,8 +10,6 @@ abstract class BaseController
 
     public function index(Request $request)
     {
-//        var_dump($request->per_page);exit;
-//        return $this->classe::all();
         return $this->classe::paginate($request->per_page);
     }
 

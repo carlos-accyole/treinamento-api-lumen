@@ -13,6 +13,6 @@ class EpisodiosController extends BaseController
 
     public function buscaPorSerie(int $serieId)
     {
-        return Episodio::query()->where('serie_id', $serieId)->get();
+        return Episodio::query()->where('serie_id', $serieId)->paginate();
    }
 }
